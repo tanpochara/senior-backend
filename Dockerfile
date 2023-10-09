@@ -2,6 +2,7 @@
 WORKDIR /app
 COPY *.sln .
 COPY ./SeniorProject/*.csproj ./SeniorProject/
+COPY ./SeniorProject.UnitTests/*.csproj ./SeniorProject.UnitTests/
 RUN dotnet restore
 COPY . ./
 RUN dotnet publish -c Release -o /publish
