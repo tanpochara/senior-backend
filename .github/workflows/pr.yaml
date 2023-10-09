@@ -1,4 +1,4 @@
-﻿name: C# CI/CD
+﻿name: test pr
 
 on:
   push:
@@ -26,16 +26,3 @@ jobs:
         
       - name: Test
         run: dotnet test --no-restore
-        
-      - name: Login to GitHub Container Registry
-        uses: docker/login-action@v2
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_PASSWORD }}
-
-      - name: Build and push
-        uses: docker/build-push-action@v3
-        with:
-          push: true
-          tags: |
-            tanpochara/senior-backend:1.0.${{ github.run_id }}-pre-release
